@@ -5,7 +5,7 @@ rm -rf /etc/pptpd.conf
 rm -rf /etc/ppp
 
 arch=`uname -m`
-wget -c wget https://raw.githubusercontent.com/1265578519/pptp/master/1.4.0/pptpd-1.4.0-1.el6.$arch.rpm
+wget -c wget http://git.oschina.net/cc12655/pptp/raw/master/1.4.0/pptpd-1.4.0-1.el6.$arch.rpm
 
 yum -y install make libpcap iptables gcc-c++ logrotate tar cpio perl pam tcp_wrappers dkms kernel_ppp_mppe ppp
 rpm -Uvh pptpd-1.4.0-1.el6.$arch.rpm
