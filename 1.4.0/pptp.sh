@@ -30,6 +30,7 @@ echo "vpn pptpd ${pass} *" >> /etc/ppp/chap-secrets
 iptables -t nat -A POSTROUTING -s 172.16.36.0/24 -j SNAT --to-source `ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk 'NR==1 { print $1}'`
 iptables -A FORWARD -p tcp --syn -s 172.16.36.0/24 -j TCPMSS --set-mss 1356
 /sbin/iptables -I INPUT -p tcp --dport 1723 -j ACCEPT
+/sbin/iptables -I INPUT -p gre -j ACCEPT
 service iptables save
 
 chkconfig iptables on
